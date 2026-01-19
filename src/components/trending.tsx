@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 import { getMovie } from "../services/tmdb";
 import type { Movie } from "../types/movie";
 import starBlock from "../assets/star-rating.svg";
@@ -54,12 +54,12 @@ export default function Trending() {
         <div className="overflow-hidden">
           <div
             ref={sliderRef}
-            className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide"
+            className="flex gap-6 overflow-x-scroll scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {(data ?? []).slice(0, 10).map((movie, index) => (
               <Link
                 key={movie.id}
-                to={`/movie/${movie.id}`} // Add Link with navigation
+                to={`/movie/${movie.id}`}
                 className="relative w-40 md:w-48 shrink-0
                            transition-transform duration-300 hover:scale-105"
               >

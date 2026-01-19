@@ -21,7 +21,7 @@ const SearchIcon = () => (
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // Get current location for active state
+  const location = useLocation();
 
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
@@ -201,11 +201,27 @@ const Navbar = () => {
           </div>
 
           <ul className="flex flex-col gap-8 px-5 py-10 text-lg text-left">
-            <li className="hover:text-red-500">
-              <Link to="/" onClick={closeMobileMenu}>Home</Link>
+            <li>
+              <Link 
+                to="/" 
+                onClick={closeMobileMenu}
+                className={`hover:text-red-500 transition-colors ${
+                  location.pathname === "/" ? "text-red-500" : ""
+                }`}
+              >
+                Home
+              </Link>
             </li>
-            <li className="hover:text-red-500">
-              <Link to="/favorites" onClick={closeMobileMenu}>Favorite</Link>
+            <li>
+              <Link 
+                to="/favorites" 
+                onClick={closeMobileMenu}
+                className={`hover:text-red-500 transition-colors ${
+                  location.pathname === "/favorites" ? "text-red-500" : ""
+                }`}
+              >
+                Favorite
+              </Link>
             </li>
           </ul>
         </div>
